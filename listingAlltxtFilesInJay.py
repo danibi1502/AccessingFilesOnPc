@@ -1,6 +1,5 @@
 import os
-import time
-a = time.time()
+
 def getAllFilesInDir(*dir):
     fileList = []
     dirs = os.listdir(*dir)
@@ -49,7 +48,7 @@ def getAll_txtFilesInDir(mainDirName, *dir):
     return txtFileList
 
 def getAll_txtFilesInJay():
-    JAYPath = "C:\\Users\MR APIRIALA\Desktop\Jay"
+    JAYPath = "C:\\Users\MR APIRIALA\Desktop"
     txtFiles = getAll_txtFilesInDir(JAYPath)
     return makeStringFromListOfLists(txtFiles).split(" ")
 
