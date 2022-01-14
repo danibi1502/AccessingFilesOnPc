@@ -27,9 +27,7 @@ def joinFileToPath(pathName, fileName):
 
 # returns boolean to know if the file passed as an argument is a .txt file or not
 def checkIfFileIs_txt(fileName):
-    if fileName.endswith(".txt"):
-        return True
-    return False
+    return fileName.endswith(".txt"):
 
 # returns a list of all .txt files in the fileList passed to the function as an argument
 def getAll_txtFilesInFileList(fileList):
