@@ -47,8 +47,8 @@ def getAll_txtFilesInDir(mainDirName, *dir):
         txtFileList.append(getAll_txtFilesInDir(aDirName))
     return txtFileList
 
-def getAll_txtFilesInJay():
-    JAYPath = "C:\\Users\MR APIRIALA\Desktop"
+def getAll_txtFilesInJay(userName):
+    JAYPath = f"C:\\Users\{userName}\Desktop"
     txtFiles = getAll_txtFilesInDir(JAYPath)
     return makeStringFromListOfLists(txtFiles).split(" ")
 
@@ -62,6 +62,7 @@ def makeStringFromListOfLists(listOfLists):
     return finalString
 
 if __name__ == "__main__":
-    for txtFile in getAll_txtFilesInJay():
+    userName = input("Enter your PC's UserName: ")
+    for txtFile in getAll_txtFilesInJay(userName):
         if txtFile != "":
             print(txtFile)
