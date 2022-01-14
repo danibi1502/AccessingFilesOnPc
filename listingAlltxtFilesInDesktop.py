@@ -26,14 +26,14 @@ def joinFileToPath(pathName, fileName):
     return os.path.join(pathName, fileName)
 
 # returns boolean to know if the file passed as an argument is a .txt file or not
-def checkIfFileIs_txt(fileName):
-    return fileName.endswith(".txt"):
+def checkIfFileIsTXT(fileName):
+    return fileName.endswith(".txt")
 
 # returns a list of all .txt files in the fileList passed to the function as an argument
-def getAll_txtFilesInFileList(fileList):
+def getAllTXTFilesInFileList(fileList):
     txtFileList = []
     for file in fileList:
-        if checkIfFileIs_txt(file):
+        if checkIfFileIsTXT(file):
             txtFileList.append(file)
     return txtFileList
 
@@ -47,20 +47,20 @@ def enterDirInDir(dirToEnter):
     
 # returns a list of all the .txt files in a list of directories dir
 # this function uses recursion to access inner directories in directories
-def getAll_txtFilesInDir(mainDirName, *dir):
+def getAllTXTFilesInDir(mainDirName, *dir):
     enterDirInDir(mainDirName)
     fileList = getAllFilesInDir(*dir)
-    txtFileList = getAll_txtFilesInFileList(fileList)
+    txtFileList = getAllTXTFilesInFileList(fileList)
     dirList = getAllDirsInDir(*dir)
     for aDir in dirList:
         aDirName = getNameOFDirInDir(mainDirName, aDir)
-        txtFileList.append(getAll_txtFilesInDir(aDirName)) # recursion
+        txtFileList.append(getAllTXTFilesInDir(aDirName)) # recursion
     return txtFileList
 
 # returns a list of all the .txt files in the Desktop
-def getAll_txtFilesInJay(userName):
+def getAllTXTFilesInJay(userName):
     JAYPath = f"C:\\Users\{userName}\Desktop" # you can edit this file path to specify which directory you want to start from
-    txtFiles = getAll_txtFilesInDir(JAYPath)
+    txtFiles = getAllTXTFilesInDir(JAYPath)
     return makeStringFromListOfLists(txtFiles).split(" ")
 
 # returns a string that contains the elements of listOfLists separated by a single space
@@ -76,7 +76,7 @@ def makeStringFromListOfLists(listOfLists):
 
 if __name__ == "__main__":
     userName = input("Enter your PC's UserName: ")
-    for txtFile in getAll_txtFilesInJay(userName):
+    for txtFile in getAllTXTFilesInJay(userName):
         if txtFile != "":
             print(txtFile)
             
