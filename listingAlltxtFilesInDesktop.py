@@ -1,4 +1,5 @@
-# after going through the code, copy and paste it to be able to retrieve any type of file from a specific directory on your PC :)
+# the code below will output all the .txt files on your desktop
+# copy, paste and run it in your python ide to see what it does
 
 import os #importing python os module
 
@@ -80,3 +81,5 @@ if __name__ == "__main__":
     for txtFile in getAll_txtFilesInJay(userName):
         if txtFile != "":
             print(txtFile)
+            
+# challenge: after going through the code, copy, paste and edit it in your python ide to be able to retrieve any type of file from a specific directory on your PC :)
