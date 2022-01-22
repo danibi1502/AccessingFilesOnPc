@@ -1,41 +1,44 @@
-# the code below will output all the .txt files on your desktop
-# copy, paste and run it in your python ide to see what it does
+"""
+the code below will output all the .txt files on your desktop
+copy, paste and run it in your python ide to see what it does 
+"""
 
-import os #importing python os module
+#importing python os module
+import os 
 
-# returns a list of all files in directories passed to function as arguments
-def getAllFilesInDir(*dir):
-    fileList = []
+"""returns a list of all files in directories passed to function as arguments"""
+def get_all_files_in_dir(*dir):
+    file_list = []
     dirs = os.listdir(*dir)
     for dir in dirs:
         if os.path.isfile(dir):
-            fileList.append(dir)
-    return fileList
+            file_list.append(dir)
+    return file_list
 
-# returns a list of all directories in directories passed to function as arguments
-def getAllDirsInDir(*dir):
-    dirList = []
+"""returns a list of all directories in directories passed to function as arguments"""
+def get_all_dirs_in_dir(*dir):
+    dir_list = []
     dirs = os.listdir(*dir)
     for dir in dirs:
         if os.path.isdir(dir):
-            dirList.append(dir)
-    return dirList
+            dir_list.append(dir)
+    return dir_list
 
-# returns a string that contains the filePath to a file
-def joinFileToPath(pathName, fileName):
-    return os.path.join(pathName, fileName)
+"""returns a string that contains the filePath to a file"""
+def join_file_to_path(path_name, file_name):
+    return os.path.join(path_name, file_name)
 
-# returns boolean to know if the file passed as an argument is a .txt file or not
-def checkIfFileIsTXT(fileName):
-    return fileName.endswith(".txt")
+"""returns boolean to know if the file passed as an argument is a .txt file or not"""
+def check_if_file_is_TXT(file_name):
+    return file_name.endswith(".txt")
 
-# returns a list of all .txt files in the fileList passed to the function as an argument
-def getAllTXTFilesInFileList(fileList):
-    txtFileList = []
-    for file in fileList:
-        if checkIfFileIsTXT(file):
-            txtFileList.append(file)
-    return txtFileList
+"""returns a list of all .txt files in the fileList passed to the function as an argument"""
+def get_all_TXT_files_in_file_list(file_list):
+    txt_file_list = []
+    for file in file_list:
+        if check_if_file_is_TXT(file):
+            txt_file_list.append(file)
+    return txt_file_list
 
 # returns, as a string, the name of a directory in the current directory
 def getNameOFDirInDir(mainDirName, dirToEnterName):
