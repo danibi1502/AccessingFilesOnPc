@@ -40,47 +40,47 @@ def get_all_TXT_files_in_file_list(file_list):
             txt_file_list.append(file)
     return txt_file_list
 
-# returns, as a string, the name of a directory in the current directory
-def getNameOFDirInDir(mainDirName, dirToEnterName):
-    return mainDirName + "\\" + dirToEnterName
+"""returns, as a string, the name of a directory in the current directory"""
+def get_name_of_dir_in_dir(main_dir_name, dir_to_enter_name):
+    return main_dir_name + "\\" + dir_to_enter_name
 
-# enters the directory dirToEnter
-def enterDirInDir(dirToEnter):
-    os.chdir(dirToEnter)
+"""enters the directory dirToEnter""" 
+def enter_dir_in_dir(dir_to_enter):
+    os.chdir(dir_to_enter)
     
-# returns a list of all the .txt files in a list of directories dir
-# this function uses recursion to access inner directories in directories
-def getAllTXTFilesInDir(mainDirName, *dir):
-    enterDirInDir(mainDirName)
-    fileList = getAllFilesInDir(*dir)
-    txtFileList = getAllTXTFilesInFileList(fileList)
-    dirList = getAllDirsInDir(*dir)
-    for aDir in dirList:
-        aDirName = getNameOFDirInDir(mainDirName, aDir)
-        txtFileList.append(getAllTXTFilesInDir(aDirName)) # recursion
-    return txtFileList
+"""returns a list of all the .txt files in a list of directories dir
+this function uses recursion to access inner directories in directories"""
+def get_all_TXT_files_in_dir(main_dir_name, *dir):
+    enter_dir_in_dir(main_dir_name)
+    file_list = get_all_files_in_dir(*dir)
+    txt_file_list = get_all_TXT_files_in_file_list(file_list)
+    dir_list = get_all_dirs_in_dir(*dir)
+    for a_dir in dir_list:
+        a_dir_name = get_name_of_dir_in_dir(main_dir_name, a_dir)
+        txt_file_list.append(get_all_TXT_files_in_dir(a_dir_name)) # recursion
+    return txt_file_list
 
-# returns a list of all the .txt files in the Desktop
-def getAllTXTFilesInJay(userName):
-    JAYPath = f"C:\\Users\{userName}\Desktop" # you can edit this file path to specify which directory you want to start from
-    txtFiles = getAllTXTFilesInDir(JAYPath)
-    return makeStringFromListOfLists(txtFiles).split(" ")
+"""returns a list of all the .txt files in the Desktop"""
+def get_all_TXT_files_in_JAY(user_name):
+    JAY_path = f"C:\\Users\{user_name}\Desktop" # you can edit this file path to specify which directory you want to start from
+    txt_files = get_all_TXT_files_in_dir(JAY_path)
+    return make_string_from_list_of_lists(txt_files).split(" ")
 
-# returns a string that contains the elements of listOfLists separated by a single space
-# this function uses recursion to access inner lists in lists
-def makeStringFromListOfLists(listOfLists):
-    finalString = ""
-    for item in listOfLists:
+"""returns a string that contains the elements of listOfLists separated by a single space
+this function uses recursion to access inner lists in lists"""
+def make_string_from_list_of_lists(list_of_lists):
+    final_string = ""
+    for item in list_of_lists:
         if type(item) is type([]):
-            finalString += makeStringFromListOfLists(item) # recursion
+            final_string += make_string_from_list_of_lists(item) # recursion
         else:
-            finalString += " " + item
-    return finalString
+            final_string += " " + item
+    return final_string
 
 if __name__ == "__main__":
-    userName = input("Enter your PC's UserName: ")
-    for txtFile in getAllTXTFilesInJay(userName):
-        if txtFile != "":
-            print(txtFile)
+    user_name = input("Enter your PC's UserName: ")
+    for txt_file in get_all_TXT_files_in_JAY(user_name):
+        if txt_file != "":
+            print(txt_file)
             
 # challenge: after going through the code, copy, paste and edit it in your python ide to be able to retrieve any type of file from a specific directory on your PC :)
