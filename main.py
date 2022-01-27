@@ -1,8 +1,9 @@
-import support.py 
+import getpass
+import support
 
 class FileMal:
     def __init__(self):
-        self.F = FileMalFunctions()
+        self.F = support.FileMalFunctions()
         self.user_name = getpass.getuser()
 
     """returns a list of all the .txt files in the Desktop"""
