@@ -1,5 +1,4 @@
 import os
-import getpass
 
 """returns a list of all files in directories passed to function as arguments"""
 
